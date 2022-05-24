@@ -34,6 +34,9 @@ class TopBar extends StatelessWidget {
         children: [
           if (secondaryAction != null) secondaryAction!,
           _titleBar(),
+          SizedBox(
+            width: 20,
+          ),
           if (primaryAction != null) primaryAction!,
         ],
       ),

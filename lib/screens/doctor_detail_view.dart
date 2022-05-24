@@ -2,7 +2,10 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:inmedic/constants.dart';
+import 'package:inmedic/domain/auth_provider.dart';
+import 'package:inmedic/screens/chat_view.dart';
 import 'package:inmedic/widgets/appbar.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/models/doctor.dart';
@@ -21,6 +24,7 @@ class DoctorDetails extends StatefulWidget {
 class _DoctorDetailsState extends State<DoctorDetails> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthenticationProvider>(context);
     return Scaffold(
       // appBar: encabezado(),
       body: CustomScrollView(
@@ -98,7 +102,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       children: <Widget>[
                         actionButton(
                           onTap: () {
-                            final tel = Uri.parse('tel:3014024463');
+                            final tel = Uri.parse('tel:${widget.doctor.phone}');
                             launchUrl(tel);
                           },
                           ImagePath: "assets/img/standard_phone.png",
@@ -107,7 +111,12 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                           width: 20,
                         ),
                         actionButton(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ChatView(
+                                      chatId: widget.doctor.name,
+                                    )));
+                          },
                           ImagePath: "assets/img/standard_chat.png",
                         ),
                       ],

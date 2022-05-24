@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
 
 import 'package:flutter/material.dart';
+import 'package:inmedic/constants.dart';
 import 'package:inmedic/domain/provider.dart';
 import 'package:inmedic/screens/doctors_view.dart';
 import 'package:provider/provider.dart';
@@ -39,14 +40,15 @@ class _HomePageState extends State<HomePage> {
     final provider = Provider.of<ProviderBloc>(context, listen: true);
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: encabezado(),
+        appBar: encabezado(context),
         backgroundColor: Colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             foco(size, context),
+            // Divider(),
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 10),
+              padding: const EdgeInsets.only(left: 20, top: 0),
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -64,14 +66,28 @@ class _HomePageState extends State<HomePage> {
               flex: 2,
               child: servicios(size, context),
             ),
+            // Divider(),
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              padding: const EdgeInsets.only(
+                  top: 10, left: 20, right: 20, bottom: 20),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("TOP-Doctores"),
+                    Text(
+                      "TOP-Doctores",
+                      style: TextStyle(
+                        color: KColor.darkBlueText,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     InkWell(
-                      child: Text("Ver Todos"),
+                      child: Text(
+                        "Ver Todos",
+                        style: TextStyle(
+                          color: KColor.darkBlueText,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       onTap: () async {
                         final value =
                             await Navigator.of(context).push(MaterialPageRoute(
@@ -116,36 +132,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   servicios(Size size, BuildContext context) {
-    // return new Row(
-    //   children: <Widget>[
-    //     new Flexible(
-    //       child: new CustomScrollView(
-    //         shrinkWrap: true,
-    //         scrollDirection: Axis.horizontal,
-    //         slivers: <Widget>[
-    //           new SliverPadding(
-    //             padding: const EdgeInsets.all(20.0),
-    //             sliver: new SliverList(
-    //               delegate: new SliverChildListDelegate(
-    //                 <Widget>[
-    //                   service(context, "Odontologia", "assets/img/diente.png"),
-    //                   service(context, "Cardiologia", "assets/img/corazon.png"),
-    //                   service(context, "Drogueria", "assets/img/drug.png"),
-    //                   service(
-    //                       context, "Ambulancia", "assets/img/ambulance.png"),
-    //                   service(
-    //                       context, "Laboratorio", "assets/img/microscope.png"),
-    //                   service(
-    //                       context, "Optometria", "assets/img/optometria.png"),
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ],
-    // );
     return SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20),
         scrollDirection: Axis.horizontal,

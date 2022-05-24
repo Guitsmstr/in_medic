@@ -10,5 +10,6 @@ class KColor {
 
 class KUIds {
   static const String mainUserUId = "oGZJS9u4K8XYZwCYamSVFMFyMtt1";
+  // static const String mainUserUId = "rMWhNsNPB3XN5yKlKXdr8VxyeTk1";
   static const String ChatID = "d3sdcO7QXrxwSUPXPZMj";
 }

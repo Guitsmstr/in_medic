@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:inmedic/data/models/doctor.dart';
 import 'package:inmedic/screens/doctor.dart';
 
@@ -59,5 +60,96 @@ class LocalRepo {
         favorite: false,
       ),
     ];
+  }
+
+  Set<Marker> getMarkers() {
+    Set<Marker> markers = Set();
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("drog - 1"),
+      position: LatLng(11.015645, -74.847071), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Drogería IMedic',
+        snippet: 'Drogería',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("drog - 2"),
+      position: LatLng(11.015719, -74.846551), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Drogería IMedic sede 2',
+        snippet: 'Drogería',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("clinic - 1"),
+      position: LatLng(11.015869, -74.846300), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Clínica Porto Azul',
+        snippet: 'Drogería',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("clinic - 2"),
+      position: LatLng(11.013183, -74.847799), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Clínica Cardiológica',
+        snippet: 'Cardiología',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("opto - 1"),
+      position: LatLng(11.015153, -74.827826), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Optica IMedic',
+        snippet: 'Optica',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("lab - 1"),
+      position: LatLng(11.001140, -74.812888), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Laboratorio IMedic',
+        snippet: 'Laboratorio',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+    markers.add(Marker(
+      //add second marker
+      markerId: MarkerId("dent - 1"),
+      position: LatLng(11.013946, -74.836234), //position of marker
+      infoWindow: InfoWindow(
+        //popup info
+        title: 'Clínica Odontológica',
+        snippet: 'Odontología',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+
+    return markers;
+  }
+
+  Set<Marker> getMarkerByType(String type) {
+    final markers = getMarkers();
+    final Set<Marker> filteredMarkers =
+        markers.where((marker) => marker.infoWindow.snippet == type).toSet();
+    return filteredMarkers;
   }
 }

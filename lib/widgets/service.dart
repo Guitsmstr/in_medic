@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inmedic/screens/mapPage.dart';
 import '../screens/location_service.dart';
 
 service(context, String nombre, String url) {
@@ -9,7 +10,12 @@ service(context, String nombre, String url) {
       // height: MediaQuery.of(context).size.height * 0.22,
       // width: MediaQuery.of(context).size.width / 4,
       child: GestureDetector(
-          onTap: () => getPlaceId(nombre),
+          onTap: () {
+            getPlaceId(nombre);
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => mapPage(),
+            ));
+          },
           child: Column(children: <Widget>[
             Expanded(
               child: Column(

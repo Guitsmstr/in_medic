@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inmedic/domain/auth_provider.dart';
 import 'package:inmedic/domain/provider.dart';
 import 'package:provider/provider.dart';
 import 'screens/PantallaInicio.dart';
@@ -25,7 +26,10 @@ class LogicalBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => ProviderBloc())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProviderBloc()),
+        ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
+      ],
       child: MyApp(),
     );
   }

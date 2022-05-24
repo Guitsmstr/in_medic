@@ -10,10 +10,8 @@ import 'package:inmedic/screens/widgets/custom_text_field.dart';
 import 'package:provider/provider.dart';
 
 class ChatView extends StatefulWidget {
-  ChatView({
-    Key? key,
-  }) : super(key: key);
-
+  ChatView({Key? key, required this.chatId}) : super(key: key);
+  final String chatId;
   @override
   State<ChatView> createState() => ChatViewState();
 }
@@ -37,7 +35,7 @@ class ChatViewState extends State<ChatView> {
       providers: [
         ChangeNotifierProvider<ChatPageProvider>(
           create: (_) =>
-              ChatPageProvider("prueba", _messagesListViewController),
+              ChatPageProvider(widget.chatId, _messagesListViewController),
         ),
       ],
       child: Builder(builder: (BuildContext context) {
@@ -62,7 +60,8 @@ class ChatViewState extends State<ChatView> {
                           Container(
                             color: KColor.darkGreenBackground,
                             child: TopBar(
-                              "title",
+                              "${widget.chatId}",
+                              fontSize: 25,
                               secondaryAction: IconButton(
                                 icon: const Icon(
                                   Icons.arrow_back_ios,

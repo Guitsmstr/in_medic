@@ -58,19 +58,6 @@ class _BarNavigetorState extends State<BarNavigetor> {
                 GestureDetector(
                   child: new Container(
                     child: Icon(
-                      Icons.search,
-                      color: KColor.darkGreenBackground,
-                      size: 35,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => mapPage()));
-                  },
-                ),
-                GestureDetector(
-                  child: new Container(
-                    child: Icon(
                       Icons.home,
                       color: KColor.darkGreenBackground,
                       size: 35,
@@ -84,17 +71,31 @@ class _BarNavigetorState extends State<BarNavigetor> {
                 GestureDetector(
                   child: new Container(
                     child: Icon(
-                      Icons.chat_outlined,
+                      Icons.search,
                       color: KColor.darkGreenBackground,
                       size: 35,
                     ),
                   ),
                   onTap: () {
-                    print("chat");
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => ChatView()));
+                        MaterialPageRoute(builder: (context) => mapPage()));
                   },
                 ),
+
+                // GestureDetector(
+                //   child: new Container(
+                //     child: Icon(
+                //       Icons.chat_outlined,
+                //       color: KColor.darkGreenBackground,
+                //       size: 35,
+                //     ),
+                //   ),
+                //   onTap: () {
+                //     print("chat");
+                //     // Navigator.of(context).push(
+                //     // MaterialPageRoute(builder: (context) => ChatView()));
+                //   },
+                // ),
                 GestureDetector(
                   child: new Container(
                     child: Icon(

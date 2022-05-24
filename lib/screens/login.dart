@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:inmedic/domain/auth_provider.dart';
+import 'package:provider/provider.dart';
 import 'HomePage.dart';
 import 'package:get/get.dart';
 import '../widgets/authentication.dart';
@@ -10,11 +12,11 @@ class LoginScreen extends StatelessWidget {
   String pass = "";
 
   AuthenticationController authenticationController = Get.find();
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     Color c = const Color(0xFF006d77);
+    final authProvider = Provider.of<AuthenticationProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -22,7 +24,10 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: c,
         body: Stack(
-          children: [encabezado(size, context), loginform(context)],
+          children: [
+            encabezado(size, context),
+            loginform(context, authProvider)
+          ],
         ),
       ),
     );
@@ -40,7 +45,8 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  SingleChildScrollView loginform(BuildContext context) {
+  SingleChildScrollView loginform(
+      BuildContext context, AuthenticationProvider provider) {
     Color cc = const Color(0xFF003277);
     Color c = const Color(0xFF006d77);
 
@@ -130,7 +136,9 @@ class LoginScreen extends StatelessWidget {
                             // Navigator.pushReplacementNamed(context, 'home');
                             print(email);
                             print(pass);
-                            authenticationController
+                            // authenticationController
+                            // .login(email, pass)
+                            provider
                                 .login(email, pass)
                                 .then((_) => Navigator.of(context).push(
                                     MaterialPageRoute(
